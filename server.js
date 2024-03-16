@@ -4,7 +4,7 @@ const { users, products } = require('./data/data');
 
 
 
- //GEt user profile PRIVATE
+ //GEt users' products 
  const getUserProducts =  async (request, reply) => {
     try {
 
@@ -24,17 +24,13 @@ const { users, products } = require('./data/data');
       // return all products with the same category
       const suggestedProduct = products.filter(item => item.category == productLastViewed )
 
-      //const productsToSuggest = 
-
       
       if (!user) {
         reply.status(404).send({ error: 'User was not found' });
         return;
       }
   
-      reply.send(suggestedProduct);
-
-    
+      reply.send(suggestedProduct);   
       
     } catch (err) {
       console.error('Error getting user products:', err);
